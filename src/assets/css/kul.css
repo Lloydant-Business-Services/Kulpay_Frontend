@@ -21,7 +21,7 @@
           ,#0d44bc,#0d61ad);
    
     }
-    .banner-content {
+    /* .banner-content {
       width: 80%;
       max-width: 845px;
       height: 500px;
@@ -33,7 +33,7 @@
       z-index: 1;
       margin-top: -80px;
       
-      }
+      } */
       .banner h1 {
         /* color: @banner-title-color; */
         font-size: 68px;
@@ -398,6 +398,9 @@ tr.ant-table-expanded-row > td, tr.ant-table-expanded-row:hover > td {
     background: #1a2337f0!important;
     border-bottom: 1px solid #214e3b!important;
 } */
+    .form-control {
+      font-size: 13px;
+    }
 .ant-list-split .ant-list-item {
     border-bottom: 1px solid #f0f0f03b!important;
 }
@@ -405,6 +408,13 @@ tr.ant-table-expanded-row > td, tr.ant-table-expanded-row:hover > td {
     p {
       font-size: 11px!important;
     }
+        :where(.css-dev-only-do-not-override-k83k30).ant-tour{
+          width: 90vw;
+        }
+                .form-control{
+                  font-size: 11px;
+                }
+                
     .btn-mobile {
         width: 100px!important;
         padding: 10px!important;
@@ -426,6 +436,11 @@ tr.ant-table-expanded-row > td, tr.ant-table-expanded-row:hover > td {
       }
   }
 
+input[type="text"],
+input[type="password"],
+input[type="number"]{
+        font-size: 13px !important;
+}
 
   .ant-btn-primary{
     color: #fff!important;

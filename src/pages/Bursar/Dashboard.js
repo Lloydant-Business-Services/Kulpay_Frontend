@@ -291,12 +291,12 @@ loadInflowMonthly = () => {
             </div>
 
                 <div id="awaiting">
-                    <div style={{border:'4px solid white', width: '70vw', minHeight: '85vh', backgroundColor:'#2d2da6', marginLeft:'auto', marginRight:'auto', marginTop:'5vh',padding:'35px'}}>
+                    <div style={isMobile ? { border: '4px solid white', width: '97vw', minHeight: '85vh', backgroundColor: '#2d2da6', marginLeft: 'auto', marginRight: 'auto', marginTop: '5vh', padding: '35px' } : { border: '4px solid white', width: '70vw', minHeight: '85vh', backgroundColor: '#2d2da6', marginLeft: 'auto', marginRight: 'auto', marginTop: '5vh', padding: '35px' }}>
                         <div className="col-sm-12" style={{ marginTop: "-2px" }}>
-                            <img src={roundIcon} style={{ width: '67px', float:'right' }} />
+                            <img src={roundIcon} style={isMobile ? { width: '30px', float: 'right' } : { width: '67px', float: 'right' }} />
                         </div>
                        <center>
-                            <img src={logo} style={{ left: "-3rem", top: "-2.7rem", width: "200px", marginTop: "10px" }} />
+                            <img src={logo} style={isMobile ? { left: "-3rem", top: "-2.7rem", width: "110px", marginTop: "10px" } : { left: "-3rem", top: "-2.7rem", width: "200px", marginTop: "10px" }} />
                             <p style={{ fontSize: '22px' }} className="text-white quicksand_head">Processing your application...</p>
 
                        </center>

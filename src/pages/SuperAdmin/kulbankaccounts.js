@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { enquireScreen } from "enquire-js";
 import badge from "../../assets/images/activeBadge.svg";
 import pendingBadge from "../../assets/images/pending.svg";
@@ -20,13 +20,13 @@ import kulCheck from "../../assets/images/kulCheck.svg";
 import { Tabs, Upload, message } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { stateKeys, BASE_URL } from "../../redux/actions";
+import { Select } from "antd";
 const { TabPane } = Tabs;
 
 const columns = [
     { title: "SN", dataIndex: "key", key: "key" },
-    //{ title: "School", dataIndex: "school", key: "school" },
     { title: "Name", dataIndex: "name", key: "name" },
-    { title: "Logo", dataIndex: "logo", key: "logo" },
+    { title: "Acount Number", dataIndex: "number", key: "number" },
     { title: "Action", dataIndex: "action", key: "action" },
 ];
 
@@ -51,6 +51,7 @@ function beforeUpload(file) {
 class KulBankAccounts extends Component {
     state = {
         payLoad: JSON.parse(localStorage.getItem("_IDENTITY_")),
+        allbanks: []
     };
     handleChange = (info) => {
         if (info.file.status === "uploading") {
@@ -68,15 +69,15 @@ class KulBankAccounts extends Component {
             );
         }
     };
-fetchKulAccounts = () => {
-    Endpoint.getKulpayBankAccount()
-    .then((res) => {
-        console.log(res)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-}
+    // fetchKulAccounts = () => {
+    //     Endpoint.getKulpayBankAccount()
+    //     .then((res) => {
+    //         console.log(res, '')
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
     showModal = () => {
         this.setState({
             //visible: true,
@@ -114,6 +115,8 @@ fetchKulAccounts = () => {
         });
     };
 
+
+
     handleOk = () => {
         this.setState({ loading: true });
         setTimeout(() => {
@@ -122,7 +125,7 @@ fetchKulAccounts = () => {
     };
 
     handleCancel = () => {
-        this.setState({ visible: false, pageIgnite: false, addFaulty: false });
+        this.setState({ visible: false, pageIgnite: false, addFaulty: false, onSuccess: false });
     };
 
     newPaymentGateway = () => {
@@ -186,46 +189,64 @@ fetchKulAccounts = () => {
         this.setState({ [name]: value });
     };
 
+    handleBankSelect = (event) => {
+        this.setState({ bank_id: event });
+    };
+
+
+    addAccountNumber = () => {
+        var payload = {
+            accountName: this.state.accountName,
+            accountNumber: this.state.accountNumber,
+            bankId: this.state.bank_id
+        }
+        Endpoint.addAccountDetails(payload)
+            .then((response) => {
+                this.setState({
+                    pageIgnite: false,
+                    onSuccess: true
+
+                })
+                this.componentDidMount()
+                console.log(response)
+            })
+            .catch((err) => {
+                alert('Failed to save')
+            })
+    }
+
+    getAllBanks = () => {
+        Endpoint.getBank()
+            .then((res) => {
+                console.log(res.data, "banks")
+                this.setState({
+                    allbanks: res.data
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
     loadDataFromServer = () => {
         $("#preloader").fadeIn();
         this.setState({ dataSet: columns, activeKey: stateKeys.DEPT });
-        Endpoint.getPaymentGateways()
+        Endpoint.getKulpayBankAccount()
             .then((res) => {
+                console.log(res, 'RESPONSEEEE')
                 var mappedData = res.data.map((x, i) => {
                     return {
                         key: i + 1,
                         id: x.id,
-                        name: x.name.toUpperCase(),
-                        logo:
-                            x.logoLink != null ? (
-                                <div>
-                                    <img src={BASE_URL + x.logoLink} style={{ width: "50px" }} />
-                                </div>
-                            ) : (
-                                "-"
-                            ),
+                        name: x.accountName.toUpperCase(),
+                        number: x.accountNumber,
                         action: (
                             <p style={{ fontSize: "13px" }}>
                                 {" "}
                                 <img src={editIcon} style={{ cursor: "pointer" }} /> &nbsp; &nbsp; &nbsp; &nbsp; <img src={deleteIcon} style={{ cursor: "pointer" }} />
                             </p>
                         ),
-                        description: (
-                            <>
-                                <div className="container-fluid">
-                                    <div className="row" style={{ paddingTop: "1px" }}>
-                                        <div className="col-sm-4">
-                                            <div class="form-group">
-                                                <label for="other_name" class="animated-label manrope-text" style={{ fontSize: "13px", top: "-1px" }}>
-                                                    Address:
-                                                </label>
-                                                <p style={{ fontSize: "13px" }}>{x.address}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                        ),
+
                     };
                 });
                 this.setState({
@@ -244,12 +265,15 @@ fetchKulAccounts = () => {
     };
     componentDidMount() {
         this.loadDataFromServer();
+        this.getAllBanks();
         enquireScreen((b) => {
             this.setState({
                 isMobile: b,
             });
         });
     }
+
+
 
     render() {
         require("antd/dist/reset.css");
@@ -260,6 +284,7 @@ fetchKulAccounts = () => {
                 <div style={{ marginTop: 8 }}>Upload</div>
             </div>
         );
+
 
         return (
             <>
@@ -283,76 +308,82 @@ fetchKulAccounts = () => {
                                     </h1>
                                 </div>
                                 <div className="col-12 col-sm-12 col-xl-6 mt-2 mt-xl-0" style={{ textAlign: "right" }}>
-                                    <button className="btn btn-secondary manrope-text-light" style={{ marginTop: "20px" }}>
+                                    {/* <button className="btn btn-secondary manrope-text-light" style={{ marginTop: "20px" }}>
                                         <img src={filterIcon} /> &nbsp; Filter
-                                    </button>
+                                    </button> */}
                                     <button className="btn btn-primary manrope-text-light" style={{ marginTop: "20px", fontSize: "14px" }} onClick={this.showModal}>
                                         <i className="fa fa-plus" /> &nbsp; Add a bank account
                                     </button>
                                 </div>
                             </div>
-                            <Modal visible={this.state.pageIgnite ? true : false} title={false} onOk={this.handleOk} onCancel={this.handleCancel} footer={false} width={!isMobile ? 500 : null}>
+                            <Modal open={this.state.pageIgnite ? true : false} title={false} onOk={this.handleOk} onCancel={this.handleCancel} footer={false} width={!isMobile ? 500 : null}>
                                 <div className="modal-top">
                                     <p className="manrope-text drk-text" style={{ fontSize: "32px" }}>
-                                        New Payment Gateway
+                                        New Account Details
                                     </p>
 
-                                    <div className="row cmt-2">
-                                        <div className="col-sm-12">
-                                            <p className="manrope-text-light" style={{ fontSize: "13px" }}>
-                                                Add a payment gateway
-                                            </p>
-                                        </div>
-                                    </div>
-
                                     <div className="row" style={{ marginTop: "20px" }}>
+                                        <div className="col-sm-12">
+                                            <div className="form-group">
+                                                <label className="manrope-text-light" style={{ fontSize: "13px", marginBottom: "0rem" }}>
+                                                    Account Name
+                                                </label>
+                                                <br />
+                                                <input type="text" name="accountName" className="form-control" placeholder="Enter account name" onChange={this.handleInput} />
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-12">
+                                            <div className="form-group">
+                                                <label className="manrope-text-light" style={{ fontSize: "13px", marginBottom: "0rem" }}>
+                                                    Account Number
+                                                </label>
+                                                <br />
+                                                <input type="number" name="accountNumber" className="form-control" placeholder="Enter account Number" onChange={this.handleInput} />
+                                            </div>
+                                        </div>
                                         <div className="col-sm-12">
                                             <div className="form-group">
                                                 <label className="manrope-text-light" style={{ fontSize: "13px", marginBottom: "0rem" }}>
                                                     Name
                                                 </label>
                                                 <br />
-                                                <input type="text" name="gateway_name" className="form-control" placeholder="Enter payment gateway name" onChange={this.handleInput} />
+                                                <Select
+                                                    showSearch
+                                                    onChange={(e) => this.handleBankSelect(e)}
+                                                    style={{
+                                                        width: '100%',
+                                                        height: '38px',
+                                                        borderRadius: '0px',
+                                                        // padding:'10px'
+                                                    }}
+                                                    placeholder="Search to Select"
+                                                    optionFilterProp="children"
+                                                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                                                    filterSort={(optionA, optionB) =>
+                                                        (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                                    }
+                                                    options={this.state.allbanks.map((item) => ({
+                                                        value: item.id,
+                                                        label: item.name,
+                                                    }))}
+                                                />
                                             </div>
                                         </div>
 
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label className="manrope-text-light" style={{ fontSize: "13px", marginBottom: "0rem" }}>
-                                                    Logo
-                                                </label>
-                                                <br />
-                                                <Upload
-                                                    name="avatar"
-                                                    listType="picture-card"
-                                                    className="avatar-uploader"
-                                                    showUploadList={false}
-                                                    //{...props}
-                                                    //action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                                    beforeUpload={beforeUpload}
-                                                    onChange={this.handleChange}
-                                                    customRequest={this.dummyRequest}
-                                                >
-                                                    {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: "100%" }} /> : uploadButton}
-                                                </Upload>
-                                            </div>
-                                        </div>
+
                                     </div>
 
                                     <div className="row" style={{ marginTop: "46px" }}>
-                                        <div className="col-sm-12 col-xl-6">
-                                            <p style={{ fontSize: "12px" }} className="drk-text manrope-text cmt-1" onClick={this.handleCancel}>
-                                                Close
-                                            </p>
-                                        </div>
+
                                         <div className="col-sm-3">
                                             {this.state.isLoading ? (
                                                 <div style={{ float: "right", paddingRight: "30px" }} className="manrope-text">
                                                     <ClickLoader /> Processing...
                                                 </div>
                                             ) : (
-                                                <button className="btn btn-primary manrope-text-light" style={{ fontSize: "14px" }} onClick={this.newPaymentGateway}>
-                                                    Save Payment Gateway
+                                                <button className="btn btn-primary manrope-text-light" style={{ fontSize: "14px" }}
+                                                    onClick={() => this.addAccountNumber()}>
+                                                    Save Account Details
                                                 </button>
                                             )}
                                         </div>
@@ -360,7 +391,7 @@ fetchKulAccounts = () => {
                                 </div>
                             </Modal>
 
-                            <Modal visible={invoiceCommited} title={false} onOk={this.closeCommitted} onCancel={this.closeCommitted} footer={false} width={!isMobile ? 482 : null}>
+                            <Modal open={this.state.onSuccess} title={false} onOk={this.closeCommitted} onCancel={this.closeCommitted} footer={false} width={!isMobile ? 482 : null}>
                                 <div className="modal-top text-center">
                                     <p className="manrope-text drk-text" style={{ fontSize: "25px" }}>
                                         {commitName} added successfully!
@@ -375,7 +406,7 @@ fetchKulAccounts = () => {
 
                                     <div className="row" style={{ marginTop: "20px" }}>
                                         <div className="col-sm-12 col-xl-12">
-                                            <button className="btn btn-primary manrope-text-light" style={{ fontSize: "14px" }} onClick={this.closeCommitted}>
+                                            <button className="btn btn-primary manrope-text-light" style={{ fontSize: "14px" }} onClick={this.handleCancel}>
                                                 Continue &nbsp;
                                             </button>
                                         </div>

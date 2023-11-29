@@ -10,11 +10,11 @@ import { enquireScreen } from "enquire-js";
 // const { banner, button } = pageData;
 
 const yAnim = {
-    y: 30,
-    opacity: 0,
-    type: "from",
-    ease: "easeOutCubic",
-    duration: 300,
+    // y: 30,
+    // opacity: 0,
+    // type: "from",
+    // ease: "easeOutCubic",
+    // duration: 300,
 };
 
 export default class Banner extends Component {
@@ -33,25 +33,25 @@ export default class Banner extends Component {
       showBg: true,
     }); */
     };
-    getTextToRender = (text, delay) => {
-        const textArray = text.split("");
-        return textArray.map((t, i) => (
-            <TweenOne
-                key={i.toString()}
-                component="span"
-                animation={{
-                    y: 60,
-                    opacity: 0,
-                    type: "from",
-                    ease: "easeOutQuint",
-                    delay: delay + i * 50,
-                    duration: 450,
-                }}
-            >
-                {t === " " ? <span>&nbsp;</span> : t}
-            </TweenOne>
-        ));
-    };
+    // getTextToRender = (text, delay) => {
+    //     const textArray = text.split("");
+    //     return textArray.map((t, i) => (
+    //         <TweenOne
+    //             key={i.toString()}
+    //             component="span"
+    //             animation={{
+    //                 y: 60,
+    //                 opacity: 0,
+    //                 type: "from",
+    //                 ease: "easeOutQuint",
+    //                 delay: delay + i * 50,
+    //                 duration: 450,
+    //             }}
+    //         >
+    //             {t === " " ? <span>&nbsp;</span> : t}
+    //         </TweenOne>
+    //     ));
+    // };
     render() {
         const {
             className,
@@ -68,12 +68,12 @@ export default class Banner extends Component {
                     <TweenOne component="h2" animation={{ ...yAnim, delay: 600 }}>
                         {isMobile ? (
                             <div className="">
-                                <h2 className="manrope" style={{ fontSize: "30px", color: "white", marginTop: "0px" }}>
-                                    Number #1, <br />  Digital Remitance Platform
+                                <h2 className="outfit_head" style={{ fontSize: "40px", color: "white", marginTop: "0px" }}>
+                                    Number #1, <br />  Digital Remitance <br />Platform
                                 </h2>
                             </div>
                         ) : (
-                            <h2 className="manrope" style={{ fontSize: "58px", color: "white", lineHeight:'80px' }}>
+                            <h2 className="outfit_head" style={{ fontSize: "58px", color: "white", lineHeight: '80px' }}>
                                 Number #1, Digital <br /> Remitance Platform
                             </h2>
                         )}
@@ -84,12 +84,17 @@ export default class Banner extends Component {
                     <TweenOne animation={{ ...yAnim, delay: 800 }} className="extra" key="text">
                         {isMobile ? (
                             <div className="">
-                                <p className="manrope-text" style={{ fontSize: "14px", color: "#FFF" }}>
+                                <small className="outfit_text" style={{ fontSize: "16px", color: "#FFF" }}>
                                     We bring the results while helping you achieve cost and time and time savings without taking on risk or management overhead.
-                                </p>
+                                </small>
+                                <br />
+                                <br />
+                                <small className="outfit_text" style={{ fontSize: "16px", color: "#FFF" }}>
+                                  Faster, smater and seamless integration into you applications
+                                </small>
                             </div>
                         ) : (
-                            <p style={{ fontSize: "18px", color: "#FFF" }} className="manrope-text">
+                            <p style={{ fontSize: "18px", color: "#FFF" }} className="outfit_text">
                                 We bring the results while helping you achieve cost and time <br />
                                 savings without taking on risk or management overhead.
                             </p>

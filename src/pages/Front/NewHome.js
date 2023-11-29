@@ -113,8 +113,8 @@ export default class Page2 extends Component {
             <div style={{ background: "#FFF" }}>
                 <div id="preloader">
                     <div id="status">
-                        <img src={logo} style={{ left: "-3rem", top: "-2.7rem", width: "138px", marginTop: "10px", position: "absolute" }} />
-                        <StageSpinner color="#05EEC0" backColor="#FFF" frontColor="#FFF" size={50} />
+                        <img src={logo} style={{ left: "-3rem", top: "-2.7rem", width: "100px", marginTop: "10px", position: "absolute" }} />
+                        <StageSpinner color="#05EEC0" backColor="#FFF" frontColor="#FFF" size={30} />
                     </div>
                 </div>
                 {/* <KulLoader/> */}
@@ -123,89 +123,73 @@ export default class Page2 extends Component {
                     <nav className="home-nav" style={!isMobile ? { width: "80%" } : null}>
                         <ul>
                             <li>
-                                <a className="navbar-brand" href="#">
-                                    <img src={logo} style={{ left: "0rem", top: "0rem", width: "95px", height: "28.96px" }} />
+                                <a className="navbar-brand" href="#" style={isMobile ? {marginLeft:'-17px'} : null}>
+                                    <img src={logo} style={!isMobile ? { left: "0rem", top: "0rem", width: "130px"} : { left: "0rem", top: "0rem", width: "104px" }} />
                                 </a>
                             </li>
+                          {isMobile ? 
+                                <span>
+                                    <li style={{marginLeft:'-20px', marginRight:'-29px'}}>
+                                        <Link to={{ pathname: "/signin" }} className="outfit_text" style={{ fontSize: "13px", borderRadius: '10px'}}>
+                                            Sign in
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={{ pathname: "/create_account" }} className="btn btn-outline-dove outfit_text" style={{ fontSize: "12px", borderRadius: '8px'}}>
+                                            Create an account
+                                        </Link>
+                                    </li>
+                                    {/* <li>
+                                        <Link to="/create_account">
+                                            <button className="btn btn-dove outfit_head" style={{ fontSize: "10px", borderRadius: '13px' }}>
+                                                Create free account
+                                            </button>
+                                        </Link>
+                                    </li> */}
+                                </span>  
+                        : null}
                             <span className="hide-mobile">
                                 <li>
-                                    <a className="manrope-text-link-light" href="#">
+                                    <a className="outfit_head-text-link-light" href="#">
                                         Product
                                     </a>
                                 </li>
                                 <li>
-                                    <a className="manrope-text-link-light" href="#">
+                                    <a className="outfit_head-text-link-light" href="#">
                                         Services
                                     </a>
                                 </li>
                                 <li>
-                                    <a className="manrope-text-link-light" href="#">
+                                    <a className="outfit_head-text-link-light" href="#">
                                         Contact us
                                     </a>
                                 </li>
                                 <span style={{ float: "right" }}>
                                     <li>
-                                        {/* <a className="btn btn-outline-dove manrope" href="/signin" style={{fontSize:'14px', fontWeight:'700', marginRight:'10px'}}>Sign in</a> */}
-
-                                        {/* <Nav className="align-items-center d-none d-md-flex" navbar>
-                                            <UncontrolledDropdown nav> */}
-                                                {/* <DropdownToggle className="pr-0" nav>
-                                                    <Media className="align-items-center"> */}
-                                                        <Link to={{ pathname: "/signin" }} className="btn btn-outline-dove manrope" style={{ fontSize: "14px", fontWeight: "700", marginRight: "10px" }}>
+                                                        <Link to={{ pathname: "/signin" }} className="btn btn-outline-dove outfit_head" style={{ fontSize: "14px", fontWeight: "700", marginRight: "10px" }}>
                                                             Sign in
                                                         </Link>
-                                                    {/* </Media>
-                                                </DropdownToggle> */}
-                                                {/* <DropdownMenu className="dropdown-menu-arrow" right>
-                                                  
-                                                    <Link to={{ pathname: "/signin", state: { identifier: "Teller" } }}>
-                                                        <DropdownItem>
-                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
-                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
-                                                                Teller
-                                                            </span>
-                                                        </DropdownItem>
-                                                    </Link>
-                                                    <Link to={{ pathname: "/signin", state: { identifier: "SuperTeller" } }}>
-                                                        <DropdownItem>
-                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
-                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
-                                                                Super Teller
-                                                            </span>
-                                                        </DropdownItem>
-                                                    </Link>
-
-                                                    <Link to={{ pathname: "/signin" }}>
-                                                        <DropdownItem>
-                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
-                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
-                                                                Super Admin
-                                                            </span>
-                                                        </DropdownItem>
-                                                    </Link>
-
-                                                   
-                                                </DropdownMenu>
-                                            </UncontrolledDropdown>
-                                        </Nav> */}
+                                                
                                     </li>
                                     <li>
                                         <Link to="/create_account">
-                                            <button className="btn btn-dove manrope" style={{ fontSize: "14px", fontWeight: "700" }}>
+                                            <button className="btn btn-dove outfit_head" style={{ fontSize: "14px", fontWeight: "700" }}>
                                                 Create free account
                                             </button>
                                         </Link>
                                     </li>
                                 </span>
+                                
                             </span>
                         </ul>
                     </nav>
                 </div>
 
                 <Banner />
+               
                 <Page1 />
 
-                <div className="page-wrapper page2" id="screen02" style={!isMobile ? null : { height: "4050px", paddingBottom: "20px" }}>
+                <div className="page-wrapper page2" id="screen02" style={!isMobile ? null : { paddingBottom: "20px" }}>
                     <div className="container-fluid">
                         {isMobile ? (
                             <div>
@@ -214,210 +198,17 @@ export default class Page2 extends Component {
                             </div>
                         ) : null}
 
-                        <div className={!isMobile ? "cust-container" : null}>
+                        {isMobile ? <div className="cust-container">
                             <div className="col-sm-12">
-                                <img src={ListImg} style={{ width: "100%" }} />
+                                <img src={ListImg} style={{ width: "100%", visibility:'hidden' }} />
                             </div>
-                        </div>
-                        {/* <OverPack style={{ overflow: "hidden" }}>
-                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
-                        <Parallax
-                            animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }}
-                            //   style={{ transform: 'translateX(-100px)', opacity: 0 }}
-                            style={{ transform: "translateX(-100px)", filter: "blur(0px)", opacity: 0 }}
-                            className="code-box-shape"
-                        >
-                            <QueueAnim key="queue">
-                                <div className={!isMobile ? "cust-container2" : null} key="a">
-                                    <div className="col-sm-12 col-lg-7" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
-                                        <h1 className="manrope" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
-                                            Our solution for your business
-                                        </h1>
-                                        <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                            We are self-service data analytics software that lets you create visually {!isMobile ? <br /> : null}
-                                            appealing data visualizations and insightful dashboards in minutes.
-                                        </p>
-                                    </div>
-                                </div>
-                            </QueueAnim>
-                        </Parallax>
-                        {/* </OverPack> */}
+                        </div> : null}
 
-                        {/* <OverPack style={{ overflow: "hidden" }}>
-                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
-                        <Parallax
-                            animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }}
-                            //   style={{ transform: 'translateX(-100px)', opacity: 0 }}
-                            style={{ transform: "translateX(-100px)", filter: "blur(0px)", opacity: 0 }}
-                            className="code-box-shape"
-                        >
-                            <QueueAnim key="queue" leaveReverse>
-                                <div className={!isMobile ? "cust-container2" : null} key="a">
-                                    <div className={!isMobile ? "row" : null}>
-                                        <div className="col-sm-12 col-lg-3" key="1" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
-                                            <img src={pie} style={{ width: "53.35px", marginBottom: "20px" }} />
-                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
-                                                Analyze your data
-                                            </h1>
-                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                Create reports with an easy to {!isMobile ? <br /> : null}
-                                                use drag-and-drop designer.
-                                            </p>
-                                        </div>
-                                        <div className="col-sm-12 col-lg-3" key="2" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
-                                            <img src={check} style={{ width: "53.35px", marginBottom: "20px" }} />
-                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
-                                                Collaborate securely
-                                            </h1>
-                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                Share/publish your reports
-                                                {!isMobile ? <br /> : null}
-                                                with your colleagues.
-                                            </p>
-                                        </div>
-                                        <div className="col-sm-12 col-lg-3" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
-                                            <img src={dots} style={{ width: "53.35px", marginBottom: "20px" }} />
-                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
-                                                Embedded analytics
-                                            </h1>
-                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                Get a powerful analytics tool
-                                                {!isMobile ? <br /> : null}
-                                                in your own brand name.
-                                            </p>
-                                        </div>
-                                        <div className="col-sm-12 col-lg-3" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
-                                            <img src={squares} style={{ width: "53.35px", marginBottom: "20px" }} />
-                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
-                                                Easy and Intuitive
-                                            </h1>
-                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                Easily converse with your data
-                                                {!isMobile ? <br /> : null}
-                                                using everyday language.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </QueueAnim>
-                        </Parallax>
-                        {/* </OverPack> */}
-
-                        {/* <OverPack style={{ overflow: "hidden" }}>
-                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
-                        <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
-                            <QueueAnim key="queue">
-                                <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
-                                    <div className={!isMobile ? "row" : null}>
-                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
-                                            <img src={bitmap1} style={isMobile ? { width: "300.9px", height: "346px", marginBottom: "20px" } : { width: "491.9px", height: "516px", marginBottom: "20px" }} />
-                                        </div>
-                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "190px" }}>
-                                            <p className="manrope-text-light" style={{ color: "#05EEC0", fontSize: "16px" }}>
-                                                ANALYTICS
-                                            </p>
-                                            <h1 className="manrope" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
-                                                Analyze your data with our analyze tools.
-                                                {/* <br /> */}
-                                            </h1>
-                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                Self-service data analytics software that lets you create visually
-                                                {/* {!isMobile ? <br /> : null} */}
-                                                appealing data visualizations and insightful dashboards in minutes.
-                                            </p>
-                                            <div className="row">
-                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
-                                                    <img src={squares} style={{ width: "53.35px", marginBottom: "20px" }} />
-                                                    <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
-                                                        Powerful dashboard
-                                                    </h1>
-                                                    <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                        Combine multiple reports into a single beautiful dashboard.
-                                                    </p>
-                                                </div>
-                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
-                                                    <img src={syncIcon} style={{ width: "53.35px", marginBottom: "20px" }} />
-                                                    <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
-                                                        Always in Sync
-                                                    </h1>
-                                                    <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                        Don’t worry about the data, always be synchronized
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </QueueAnim>
-                        </Parallax>
-                        {/* </OverPack> */}
-
-                        {/* <OverPack style={{ overflow: "hidden" }}> */}
-                        <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
-                            {/* <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
-                            <QueueAnim key="queue" leaveReverse>
-                                <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
-                                    <div className={!isMobile ? "row" : null}>
-                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "190px" }}>
-                                            <h1 className="manrope" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
-                                                Collaborate with your team anytime, anywhere.
-                                            </h1>
-                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
-                                                See which work apps your team is working in, and join them with a click. Shared cursors equals better than screen-sharing.See which work apps your team is working in, and join them with a
-                                                click. Shared cursors equals better than screen-sharing.
-                                            </p>
-
-                                            {!isMobile ? (
-                                                <div className="row">
-                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
-                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Organize your data
-                                                        </p>
-                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Work with any team
-                                                        </p>
-                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Business analytics
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "0px" } : { textAlign: "left", marginTop: "60px" }}>
-                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Always in sync
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            ) : (
-                                                <div className="row">
-                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
-                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Organize your data
-                                                        </p>
-                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Work with any team
-                                                        </p>
-                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Business analytics
-                                                        </p>
-                                                    </div>
-                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "0px" } : { textAlign: "left", marginTop: "60px" }}>
-                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
-                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Always in sync
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
-                                            <img src={womImg} style={isMobile ? { width: "300.9px", height: "346px", marginBottom: "20px" } : { width: "491.9px", height: "516px", marginBottom: "20px" }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </QueueAnim>
-                        </Parallax>
+                     
+                      
                         {/* </OverPack> */}
                         {/* <OverPack style={{ overflow: "hidden" }}> */}
-                        <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                        {/* <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
                             <TweenOne key="0" animation={{ opacity: 0.5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} />
                             <QueueAnim key="queue">
                                 <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
@@ -426,7 +217,7 @@ export default class Page2 extends Component {
                                     </div>
                                 </div>
                             </QueueAnim>
-                        </Parallax>
+                        </Parallax> */}
                         {/* </OverPack> */}
                     </div>
                     {/* <div style={{height:'600px', width:'200px'}}>
@@ -434,16 +225,225 @@ export default class Page2 extends Component {
             </div> */}
                     {/* <OverPack style={{ overflow: "hidden" }}>
                 <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+                   
+                    {/* </OverPack> */}
+                </div>
+                <div className="container-fluid">
+                    <div className={!isMobile ? "cust-container2" : null} style={!isMobile ? { marginTop: "70px" } :{marginTop:'20vh'}} key="a">
+                        <div className="row">
+                            <img src={bottomBanner} style={isMobile ? { width: "100%", } : { width: "100%", marginLeft: "auto", marginRight: "auto" }} />
+                        </div>
+                    </div>
+                    {/* </QueueAnim>
+                        </Parallax> */}
+                    {/* <OverPack style={{ overflow: "hidden" }}>
+                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+                    {/* <Parallax
+                            animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }}
+                            //   style={{ transform: 'translateX(-100px)', opacity: 0 }}
+                            style={{ transform: "translateX(-100px)", filter: "blur(0px)", opacity: 0 }}
+                            className="code-box-shape"
+                        >
+                            <QueueAnim key="queue"> */}
+                    <div className={!isMobile ? "cust-container2" : null} key="a">
+                        <div className="col-sm-12 col-lg-7" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                            <h1 className="outfit_head" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
+                                Our solution for your business
+                            </h1>
+                            <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                We are self-service data analytics software that lets you create visually {!isMobile ? <br /> : null}
+                                appealing data visualizations and insightful dashboards in minutes.
+                            </p>
+                        </div>
+                    </div>
+                    {/* </QueueAnim>
+                        </Parallax> */}
+                    {/* </OverPack> */}
+
+                    {/* <OverPack style={{ overflow: "hidden" }}>
+                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+
+                    {/* </OverPack> */}
+
+                    {/* <OverPack style={{ overflow: "hidden" }}>
+                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+
+                    {/* </OverPack> */}
+
+                    {/* <OverPack style={{ overflow: "hidden" }}> */}
+                    <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                        {/* <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+                        <QueueAnim key="queue" leaveReverse>
+                            <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
+                                <div className={!isMobile ? "row" : null}>
+                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "190px" }}>
+                                        <h1 className="outfit_head" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
+                                            Collaborate with your team anytime, anywhere.
+                                        </h1>
+                                        <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                            See which work apps your team is working in, and join them with a click. Shared cursors equals better than screen-sharing.See which work apps your team is working in, and join them with a
+                                            click. Shared cursors equals better than screen-sharing.
+                                        </p>
+
+                                        {!isMobile ? (
+                                            <div className="row">
+                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                    <p className="outfit_text" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Organize your data
+                                                    </p>
+                                                    <p className="outfit_text" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Work with any team
+                                                    </p>
+                                                    <p className="outfit_text" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Business analytics
+                                                    </p>
+                                                </div>
+                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "0px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                    <p className="outfit_text" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Always in sync
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="row">
+                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                    <p className="outfit_text" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Organize your data
+                                                    </p>
+                                                    <p className="outfit_text" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Work with any team
+                                                    </p>
+                                                    <p className="outfit_text" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Business analytics
+                                                    </p>
+                                                </div>
+                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "0px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                    <p className="outfit_text" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                        <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Always in sync
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                        <img src={womImg} style={isMobile ? { width: "300.9px", height: "346px", marginBottom: "20px" } : { width: "491.9px", height: "516px", marginBottom: "20px" }} />
+                                    </div>
+                                </div>
+                            </div>
+                        </QueueAnim>
+                    </Parallax>
+                    <Parallax
+                        animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }}
+                        //   style={{ transform: 'translateX(-100px)', opacity: 0 }}
+                        style={{ transform: "translateX(-100px)", filter: "blur(0px)", opacity: 0 }}
+                        className="code-box-shape"
+                    >
+                        <QueueAnim key="queue" leaveReverse>
+                            <div className={!isMobile ? "cust-container2" : null} key="a">
+                                <div className={!isMobile ? "row" : null}>
+                                    <div className="col-sm-12 col-lg-3" key="1" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                        <img src={pie} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                        <h1 className="outfit_head" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                            Analyze your data
+                                        </h1>
+                                        <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                            Create reports with an easy to {!isMobile ? <br /> : null}
+                                            use drag-and-drop designer.
+                                        </p>
+                                    </div>
+                                    <div className="col-sm-12 col-lg-3" key="2" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                        <img src={check} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                        <h1 className="outfit_head" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                            Collaborate securely
+                                        </h1>
+                                        <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                            Share/publish your reports
+                                            {!isMobile ? <br /> : null}
+                                            with your colleagues.
+                                        </p>
+                                    </div>
+                                    <div className="col-sm-12 col-lg-3" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                        <img src={dots} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                        <h1 className="outfit_head" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                            Embedded analytics
+                                        </h1>
+                                        <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                            Get a powerful analytics tool
+                                            {!isMobile ? <br /> : null}
+                                            in your own brand name.
+                                        </p>
+                                    </div>
+                                    <div className="col-sm-12 col-lg-3" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                        <img src={squares} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                        <h1 className="outfit_head" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                            Easy and Intuitive
+                                        </h1>
+                                        <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                            Easily converse with your data
+                                            {!isMobile ? <br /> : null}
+                                            using everyday language.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </QueueAnim>
+                    </Parallax>
+                    <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                        <QueueAnim key="queue">
+                            <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
+                                <div className={!isMobile ? "row" : null}>
+                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                        <img src={bitmap1} style={isMobile ? { width: "300.9px", height: "346px", marginBottom: "20px" } : { width: "491.9px", height: "516px", marginBottom: "20px" }} />
+                                    </div>
+                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "190px" }}>
+                                        <p className="outfit_text" style={{ color: "#05EEC0", fontSize: "16px" }}>
+                                            ANALYTICS
+                                        </p>
+                                        <h1 className="outfit_head" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
+                                            Analyze your data with our analyze tools.
+                                            {/* <br /> */}
+                                        </h1>
+                                        <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                            Self-service data analytics software that lets you create visually
+                                            {/* {!isMobile ? <br /> : null} */}
+                                            appealing data visualizations and insightful dashboards in minutes.
+                                        </p>
+                                        <div className="row">
+                                            <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                <img src={squares} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                                <h1 className="outfit_head" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                    Powerful dashboard
+                                                </h1>
+                                                <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                    Combine multiple reports into a single beautiful dashboard.
+                                                </p>
+                                            </div>
+                                            <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                <img src={syncIcon} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                                <h1 className="outfit_head" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                    Always in Sync
+                                                </h1>
+                                                <p className="outfit_text" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                    Don’t worry about the data, always be synchronized
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </QueueAnim>
+                    </Parallax>
                     <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
                         <QueueAnim key="queue">
                             <div className="bg-bott" key="a">
                                 <div className="container" style={!isMobile ? { paddingTop: "120px" } : { paddingTop: "10px" }}>
                                     <div className={!isMobile ? "row" : null}>
                                         <div className="col-sm-12 col-lg-6">
-                                            <h1 className="manrope" style={!isMobile ? { fontSize: "39px", color: "#FFF" } : {fontSize:'29px', color: "#FFF"}}>
+                                            <h1 className="outfit_head" style={!isMobile ? { fontSize: "39px", color: "#FFF" } : { fontSize: '29px', color: "#FFF" }}>
                                                 Join Our Newsletter
                                             </h1>
-                                            <p className="manrope-text-light" style={!isMobile ? { color: "#FFF", fontSize: "15px" } : { color: "#FFF", fontSize: "11px" }}>
+                                            <p className="outfit_text" style={!isMobile ? { color: "#FFF", fontSize: "15px" } : { color: "#FFF", fontSize: "11px" }}>
                                                 Just insert your email into the field below. And you will get
                                                 {!isMobile ? <br /> : null}
                                                 the updates about our updates
@@ -480,7 +480,7 @@ export default class Page2 extends Component {
                                     <div className={!isMobile ? "row" : null}>
                                         <div className="col-sm-12 col-lg-5">
                                             <img src={LogoKul} style={{ width: "90px", height: "28px", marginBottom: "30px" }} />
-                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", color: "84818A", lineHeight: "26px" } : { fontSize: "11px", color: "84818A", lineHeight: "26px" }}>
+                                            <p className="outfit_text" style={!isMobile ? { fontSize: "15px", color: "84818A", lineHeight: "26px" } : { fontSize: "11px", color: "84818A", lineHeight: "26px" }}>
                                                 Lorem ipsum dolor sit amet, consectetur adipiscing {!isMobile ? <br /> : null}
                                                 elit, sed do eiusmod tempor incididunt ut labore et
                                                 {!isMobile ? <br /> : null}
@@ -495,64 +495,64 @@ export default class Page2 extends Component {
                                         </div>
                                         <div className="col-sm-1"></div>
                                         <div className="col-sm-12 col-lg-3">
-                                            <b className="manrope-text" style={{ fontSize: "18px", color: "#2E2C34", lineHeight: "24px" }}>
+                                            <b className="outfit_head-text" style={{ fontSize: "18px", color: "#2E2C34", lineHeight: "24px" }}>
                                                 Services
                                             </b>
                                             <br />
                                             <br />
                                             {!isMobile ? (
                                                 <div>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "15px" }}>
                                                         Cashier App
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "15px" }}>
                                                         Super Teller
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "15px" }}>
                                                         Teller
                                                     </p>
                                                 </div>
                                             ) : (
                                                 <div>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "11px" }}>
                                                         Cashier App
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "11px" }}>
                                                         Super Teller
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "11px" }}>
                                                         Teller
                                                     </p>
                                                 </div>
                                             )}
                                         </div>
                                         <div className="col-sm-12 col-lg-3">
-                                            <b className="manrope-text" style={{ fontSize: "18px", color: "#2E2C34", lineHeight: "24px" }}>
+                                            <b className="outfit_head-text" style={{ fontSize: "18px", color: "#2E2C34", lineHeight: "24px" }}>
                                                 Company
                                             </b>
                                             <br />
                                             <br />
                                             {!isMobile ? (
                                                 <div>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "15px" }}>
                                                         Terms
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "15px" }}>
                                                         Privacy Policy
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "15px" }}>
                                                         Contact us
                                                     </p>
                                                 </div>
                                             ) : (
                                                 <div>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "11px" }}>
                                                         Terms
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "11px" }}>
                                                         Privacy Policy
                                                     </p>
-                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                    <p className="outfit_text" style={{ color: "#84818A", fontSize: "11px" }}>
                                                         Contact us
                                                     </p>
                                                 </div>
@@ -563,7 +563,6 @@ export default class Page2 extends Component {
                             </div>
                         </QueueAnim>
                     </Parallax>
-                    {/* </OverPack> */}
                 </div>
             </div>
             // </OverPack>

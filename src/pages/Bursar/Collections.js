@@ -1279,6 +1279,7 @@ class Collections extends Component {
                             }}
                             dataSource={this.state.allCollections}
                             className="manrope-text table-responsive"
+                            // bordered={false}
                         />
                     </div>
                 </Fade>

@@ -58,7 +58,7 @@ const TourVerify = (props) => {
     {
       title: (<h3>Click Next to continue</h3>),
       //description: <p className='manrope-text'> Click Next to continue</p>,
-	  placement:"right",
+        placement: isMobile ? "top" : "right",
       target: () => ref1.current,
 		// nextButtonProps:({
 		// 	children:(
@@ -72,7 +72,9 @@ const TourVerify = (props) => {
     {
         // title: (<h2>Personal Verification</h2>),
         description: (<><p className='manrope-text'> Click Next to continue</p></>),
-        placement:"right",
+        // placement:"right",
+        placement: isMobile ? "top" : "right",
+
         target: () => ref2.current,
           // nextButtonProps:({
           // 	children:(
@@ -86,7 +88,9 @@ const TourVerify = (props) => {
       {
         // title: (<h3>Click Finish</h3>),
         // description: (<><p className='manrope-text'>Click Next to continue</p></>),
-        placement:"right",
+        // placement:"right",
+          placement: isMobile ? "top" : "right",
+
         target: () => ref3.current,
           // nextButtonProps:({
           // 	children:(
@@ -132,7 +136,7 @@ const TourVerify = (props) => {
 	
 	return (
 	<>
-            <Tour style={{ background:'#2f2fab'}} open={open} onClose={() => setOpen(false)} steps={steps} />
+            <Tour style={isMobile ? { background: '#2f2fab', width:'85vw' } : { background:'#2f2fab'}} open={open} onClose={() => setOpen(false)} steps={steps} />
 
      <div className="row" style={!isMobile ? { marginTop: "3vh" } : null}>
                         <div className="col-sm-12 col-xl-6 mt-2 mt-xl-0">
@@ -160,9 +164,9 @@ const TourVerify = (props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-xl-1 col-sm-12">
+                                    {/* <div className="col-xl-1 col-sm-12">
                                         <img src={done_all} style={{width:'23px', marginTop:'30px'}}/>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                                     </Timeline.Item>
@@ -235,7 +239,7 @@ const TourVerify = (props) => {
                         </div>
                     
                     <div className="col-sm-12 col-xl-6 mt-2 mt-xl-0">
-                                        <img src={super_sky} style={{maxWidth:'50vh'}}/>
+                    <img src={super_sky} style={isMobile ? { maxWidth: '50vw' } : {maxWidth:'50vh'}}/>
                     </div>
                     </div>
     </>

@@ -25,8 +25,8 @@ const Endpoint = {
       let token = getUserToken();
       if (token)
         axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-        //axios.defaults.baseURL = "https://backends.kulpayng.com/api";
-        axios.defaults.baseURL = "http://10.211.55.4/api";
+        axios.defaults.baseURL = "https://backends.kulpayng.com/api";
+        //.defaults.baseURL = "http://10.211.55.4/api";
 
       // Intercept 401 HTTP Error code in API
       axios.interceptors.response.use(

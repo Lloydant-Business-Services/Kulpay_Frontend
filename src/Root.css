@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap'); */
 
 .manrope{
@@ -14,14 +17,20 @@
 }
 .quicksand_head {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
 }
 .manrope-thick{
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
   
 }
-
+.outfit_head{
+  font-family: 'Outfit', sans-serif;
+}
+.outfit_text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+}
 .manrope-text{
     font-family: 'Manrope', sans-serif;
     font-weight: 600;

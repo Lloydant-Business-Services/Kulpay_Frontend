@@ -1,353 +1,640 @@
-import React, {useEffect} from 'react';
-import {connect} from "react-redux";
-import {mapDispatchToProps, mapStateToProps} from "../../redux/actions";
-import {useMergeState} from "../../utils/helpers";
-// import Particles from "react-particles-js";
-import Test from '../../assets/images/home/test.svg';
-import Report from '../../assets/images/home/report.svg';
-import Go from '../../assets/images/home/go.svg';
-import Prof1 from '../../assets/images/home/prof1.jpg';
-import Prof2 from '../../assets/images/home/prof2.jpg';
-import Laptop from '../../assets/images/home/laptop2.png';
+import React, { Component } from "react";
+import { Parallax, OverPack } from "rc-scroll-anim";
+import QueueAnim from "rc-queue-anim";
+import TweenOne from "rc-tween-one";
+// import * as pageData from "./data";
+import ListImg from "../../assets/images/List.jpg";
+import pie from "../../assets/images/pie.png";
+import dots from "../../assets/images/dots.png";
+import check from "../../assets/images/check.png";
+import squares from "../../assets/images/Icon2.png";
+import bitmap1 from "../../assets/images/man1.jpg";
+import syncIcon from "../../assets/images/sync.png";
+import womImg from "../../assets/images/man2.jpg";
+import iconCheck from "../../assets/images/iconCheck.png";
+import bottomBanner from "../../assets/images/Group1582.png";
+import blueBottom from "../../assets/images/downBann.png";
+import LogoKul from "../../assets/images/LogoKul.png";
+import twitter from "../../assets/images/tw.png";
+import instagram from "../../assets/images/inst.png";
+import linkden from "../../assets/images/linkden.png";
+import googleIcon from "../../assets/images/gg.png";
+import { enquireScreen } from "enquire-js";
+import oval from "../../assets/images/Oval.png";
+import oval2 from "../../assets/images/Oval2.png";
+import Banner from "../Front/Banner";
+import Header from "../Front/Header";
+import Page1 from "./Page1";
+import logo from "../../assets/images/17.png";
+import KulLoader from "../../components/Loader/PageLoader/KulPayLoader";
+import { WhisperSpinner, RainbowSpinner, SwapSpinner, StageSpinner } from "react-spinners-kit";
+import { Link } from "react-router-dom";
+import dashSvg from "../../assets/images/dash-svg.svg";
+import notificatiionSvg from "../../assets/images/Notification.svg";
+import trans_white from "../../assets/images/transac_white.svg";
+import logOutSvg from "../../assets/images/dashprofile-icon.svg";
+import settingsTop from "../../assets/images/settings_applications.svg";
+import dashTopSvg from "../../assets/images/dash-svg.svg";
+import $ from "jquery";
+// import '../../assets/static/style';
 
-import App from '../../assets/images/home/hero.png';
+import { Input } from "antd";
+import { Collapse, DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Form, InputGroupAddon, InputGroupText, InputGroup, Media, NavbarBrand, Navbar, NavItem, NavLink, Nav, Container, Row, Col } from "reactstrap";
 
-const Home = props => {
-    const [state, setState] = useMergeState({
-        featured: [],
-        attendants: [],
-        shopSchedule: []
-    });
-    
-    const HeroStyle = {
-        width: "100%",
-        minHeight: "70vh",
-        // backgroundImage: "url(" + Hero + ")",
-        backgroundColor: "#EAECEF",
-        position: "relative",
-        overflow: "hidden"
-    };
-    
-    const Abs = {
-        width: "100%",
-        minHeight: "100%",
-        position: "absolute",
-        top: 0,
-        left: 0,
-    };
-    
-    const HeroContent = {
-        zIndex: 10
-    };
-    
-    const VertCenter = {
-        paddingTop: "30%"
-    };
-    
-    const ImgStyles = {
-        height: 300,
-    };
-    
-    const Br1 = {
-        backgroundColor: "#4040bf",
-        duration: ".1s"
-    };
-    
-    const Br2 = {
-        backgroundColor: "#bf4060",
-        duration: ".5s"
-    };
-    
-    const Be = {
-        totalDuration: "1.2s",
-    };
-    
-    const show = () => {
-        this.setState({
-            btn: true
-        })
-    };
-    
-    const toggleNavs = (e, state, index) => {
-        e.preventDefault();
-        this.setState({
-            [state]: index
+const { Search } = Input;
+// const { page2 } = pageData;
+const scrollElements = document.querySelectorAll(".js-scroll");
+
+// const elementInView = (el, dividend = 1) => {
+//   const elementTop = el.getBoundingClientRect().top;
+
+//   return (
+//     elementTop <=
+//     (window.innerHeight || document.documentElement.clientHeight) / dividend
+//   );
+// };
+
+// const elementOutofView = (el) => {
+//   const elementTop = el.getBoundingClientRect().top;
+
+//   return (
+//     elementTop > (window.innerHeight || document.documentElement.clientHeight)
+//   );
+// };
+
+// const displayScrollElement = (element) => {
+//   element.classList.add("scrolled");
+// };
+
+// const hideScrollElement = (element) => {
+//   element.classList.remove("scrolled");
+// };
+
+// const handleScrollAnimation = () => {
+//   scrollElements.forEach((el) => {
+//     if (elementInView(el, 1.25)) {
+//       displayScrollElement(el);
+//     } else if (elementOutofView(el)) {
+//       hideScrollElement(el)
+//     }
+//   })
+// }
+
+// window.addEventListener("scroll", () => {
+//   handleScrollAnimation();
+// });
+export default class Page2 extends Component {
+    state = {};
+    componentDidMount() {
+
+        window.scroll(0, 0);
+        enquireScreen((b) => {
+            this.setState({
+                isMobile: b,
+            });
         });
-    };
-    
-    useEffect(() => {
-    
-    }, []);
+    }
+    render() {
+        window.addEventListener("load", (event) => {
+            var image = document.querySelector("img");
+            var isLoaded = image.complete && image.naturalHeight !== 0;
+            if (isLoaded) {
+                setTimeout(() => {
+                    $("#preloader").delay(450).fadeOut("slow");
+                }, 1000);
+            }
+        });
+        //require('antd/dist/reset.css')
+        const { isMobile } = this.state;
+        let screen_height = $(window).height();
 
-    return <>
-        <div className="min-vh-100">
-        
-            <div style={HeroStyle}>
-                <div style={Abs}>
-                
-                    {/* <Particles className={Abs}
-                               height={"70vh"}
-                               params={{
-                                   "particles": {
-                                       "number": {
-                                           "value": 70,
-                                           "density": {
-                                               "enable": false
-                                           }
-                                       },
-                                       "color": {
-                                           "value": "#3e4e5e",
-                                       },
-                                       "size": {
-                                           "value": 3,
-                                           "random": true,
-                                           "anim": {
-                                               "speed": 4,
-                                               "size_min": 0.3
-                                           }
-                                       },
-                                       "line_linked": {
-                                           "enable": true,
-                                           "color": "#94a6b8",
-                                       },
-                                       "move": {
-                                           "random": true,
-                                           "speed": .8,
-                                           "direction": "all",
-                                           "out_mode": "out"
-                                       }
-                                   },
-                                   "interactivity": {
-                                       "events": {
-                                           "onhover": {
-                                               "enable": true,
-                                               "mode": "bubble"
-                                           },
-                                           "onclick": {
-                                               "enable": true,
-                                               "mode": "repulse"
-                                           }
-                                       },
-                                       "modes": {
-                                           "bubble": {
-                                               "distance": 250,
-                                               "duration": 2,
-                                               "size": 0,
-                                               "opacity": 0
-                                           },
-                                           "repulse": {
-                                               "distance": 400,
-                                               "duration": 4
-                                           }
-                                       }
-                                   }
-                               }}
-                    />
-                 */}
-                    <div style={Abs}>
-                        <div className={'container'} style={HeroContent}>
-                            <div className={'row'}>
-                                <div className={'col-lg-6'}>
-                                    <div style={VertCenter}>
-                                    
-                                        <h3 className="fade-in one font-weight-600">
-                                            Learn, test and interact wherever you are.
-                                        </h3>
-                                    
-                                        <h1 className="h1-custom home-title">
-                                            <span>Online Learning</span>
-                                            <span>Made Easy</span>
-                                        </h1>
-                                    
-                                        <h2 className="fade-in two maitree display-4">With e-Learn NG.</h2>
-                                    
-                                        <a href="/institutionSignUp" className="fade-in two btn btn-primary mt-3">
-                                            Get Started
-                                            <i className="fa fa-arrow-right ml-2"/>
-                                        </a>
-                                
-                                    </div>
-                                </div>
-                            
-                                <div className="col-lg-6 text-right">
-                                    <img src={App} alt="" className="mt-6 fade-in one" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
-                </div>
-            </div>
-        
-            <div className="container">
-                <div className="row justify-content-center">
-                
-                    <div className="col-12 col-md-8 text-center">
-                        <h2 className="h1 font-weight-bolder mb-3 mt-5">
-                            Meet our intuitive platform
-                        </h2>
-                        <p className="lead font-weight-400 mb-5">
-                            e-Learn NG provides the best solution to online learning in Nigeria.
-                            <br />
-                            Built for educational institutions looking to adopt an internet-based
-                            approach to learning,
-                            <br />
-                            e-Learn NG is the all-in-one platform you need.
-                        </p>
-                    </div>
-            
-                </div>
-            </div>
-        
-            <div className="container mt-7">
-                <div className="row">
-                    <div className="col-lg-4 col-md-6 mb-7">
-                        <div className="card card-lift--hover border border-primary cards-bg-tint">
-                            <div className="card-body">
-                                <div className="info text-left">
-                                    <div className="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle mb-4">
-                                        <img src={Test} alt=""/>
-                                    </div>
-                                
-                                    <h3 className="info-title text-uppercase text-primary pl-0">
-                                        Test Online
-                                    </h3>
-                                
-                                    <p className="description font-weight-400 opacity-8">
-                                        Set, take and review tests and exams online at your convenience.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div className="col-lg-4 col-md-6 mt--5 mb-5">
-                        <div className="card card-lift--hover border border-primary cards-bg-tint">
-                            <div className="card-body">
-                                <div className="info text-left">
-                                    <div className="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle mb-4">
-                                        <img src={Go} alt=""/>
-                                    </div>
-                                
-                                    <h3 className="info-title text-uppercase text-primary pl-0">
-                                        Learn on the go!
-                                    </h3>
-                                
-                                    <p className="description font-weight-400 opacity-8">
-                                        Access your classes, materials and tutors anywhere, from any device.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div className="col-lg-4 col-md-6 mb-5">
-                        <div className="card card-lift--hover border border-primary cards-bg-tint">
-                            <div className="card-body">
-                                <div className="info text-left">
-                                    <div className="icon icon-lg icon-shape icon-shape-primary shadow rounded-circle mb-4">
-                                        <img src={Report} alt=""/>
-                                    </div>
-                                
-                                    <h3 className="info-title text-uppercase text-primary pl-0">
-                                        Live Reports
-                                    </h3>
-                                
-                                    <p className="description font-weight-400 opacity-8">
-                                        Get summaries and details of all activities in your school and classroom.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+        return (
+            // <OverPack playScale="0.2">
+            <div style={{ background: "#FFF" }}>
+                <div id="preloader">
+                    <div id="status">
+                        <img src={logo} style={{ left: "-3rem", top: "-2.7rem", width: "138px", marginTop: "10px", position: "absolute" }} />
+                        <StageSpinner color="#05EEC0" backColor="#FFF" frontColor="#FFF" size={50} />
                     </div>
                 </div>
-        
-            </div>
-        
-            <div>
-                <div className="container">
-                    <div className='row'>
-                        <div className="col-lg-4">
-                            <div className="my-auto pt-5 text-center">
-                                <h2 className='font-weight-bold mt-5'>Platform designed for real-life learning</h2>
-                                <p>
-                                    Move your education journey forward without putting life on hold. KulPay helps you with learning that fits your routine.
+                {/* <KulLoader/> */}
+
+                <div className={!isMobile ? "cust-container" : "container-fluid"}>
+                    <nav className="home-nav" style={!isMobile ? { width: "80%" } : null}>
+                        <ul>
+                            <li>
+                                <a className="navbar-brand" href="#">
+                                    <img src={logo} style={!isMobile ? { left: "0rem", top: "0rem", width: "130px" } : { left: "0rem", top: "0rem", width: "104px" }} />
+                                </a>
+                            </li>
+                            <span className="hide-mobile">
+                                <li>
+                                    <a className="manrope-text-link-light" href="#">
+                                        Product
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="manrope-text-link-light" href="#">
+                                        Services
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="manrope-text-link-light" href="#">
+                                        Contact us
+                                    </a>
+                                </li>
+                                <span style={{ float: "right" }}>
+                                    <li>
+                                        {/* <a className="btn btn-outline-dove manrope" href="/signin" style={{fontSize:'14px', fontWeight:'700', marginRight:'10px'}}>Sign in</a> */}
+
+                                        {/* <Nav className="align-items-center d-none d-md-flex" navbar>
+                                            <UncontrolledDropdown nav> */}
+                                        {/* <DropdownToggle className="pr-0" nav>
+                                                    <Media className="align-items-center"> */}
+                                        <Link to={{ pathname: "/signin" }} className="btn btn-outline-dove manrope" style={{ fontSize: "14px", fontWeight: "700", marginRight: "10px" }}>
+                                            Sign in
+                                        </Link>
+                                        {/* </Media>
+                                                </DropdownToggle> */}
+                                        {/* <DropdownMenu className="dropdown-menu-arrow" right>
+                                                  
+                                                    <Link to={{ pathname: "/signin", state: { identifier: "Teller" } }}>
+                                                        <DropdownItem>
+                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
+                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
+                                                                Teller
+                                                            </span>
+                                                        </DropdownItem>
+                                                    </Link>
+                                                    <Link to={{ pathname: "/signin", state: { identifier: "SuperTeller" } }}>
+                                                        <DropdownItem>
+                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
+                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
+                                                                Super Teller
+                                                            </span>
+                                                        </DropdownItem>
+                                                    </Link>
+
+                                                    <Link to={{ pathname: "/signin" }}>
+                                                        <DropdownItem>
+                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
+                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
+                                                                Super Admin
+                                                            </span>
+                                                        </DropdownItem>
+                                                    </Link>
+
+                                                   
+                                                </DropdownMenu>
+                                            </UncontrolledDropdown>
+                                        </Nav> */}
+                                    </li>
+                                    <li>
+                                        <Link to="/create_account">
+                                            <button className="btn btn-dove manrope" style={{ fontSize: "14px", fontWeight: "700" }}>
+                                                Create free account
+                                            </button>
+                                        </Link>
+                                    </li>
+                                </span>
+                                <span style={{ float: "right" }}>
+                                    <li>
+                                        {/* <a className="btn btn-outline-dove manrope" href="/signin" style={{fontSize:'14px', fontWeight:'700', marginRight:'10px'}}>Sign in</a> */}
+
+                                        {/* <Nav className="align-items-center d-none d-md-flex" navbar>
+                                            <UncontrolledDropdown nav> */}
+                                        {/* <DropdownToggle className="pr-0" nav>
+                                                    <Media className="align-items-center"> */}
+                                        <Link to={{ pathname: "/signin" }} className="btn btn-outline-dove manrope" style={{ fontSize: "14px", fontWeight: "700", marginRight: "10px" }}>
+                                            Sign in
+                                        </Link>
+                                        {/* </Media>
+                                                </DropdownToggle> */}
+                                        {/* <DropdownMenu className="dropdown-menu-arrow" right>
+                                                  
+                                                    <Link to={{ pathname: "/signin", state: { identifier: "Teller" } }}>
+                                                        <DropdownItem>
+                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
+                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
+                                                                Teller
+                                                            </span>
+                                                        </DropdownItem>
+                                                    </Link>
+                                                    <Link to={{ pathname: "/signin", state: { identifier: "SuperTeller" } }}>
+                                                        <DropdownItem>
+                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
+                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
+                                                                Super Teller
+                                                            </span>
+                                                        </DropdownItem>
+                                                    </Link>
+
+                                                    <Link to={{ pathname: "/signin" }}>
+                                                        <DropdownItem>
+                                                            <img src={dashTopSvg} style={{ width: "24px", height: "24px", marginRight: "20px" }} />
+                                                            <span className="drk-text manrope-text" style={{ fontSize: "12px" }}>
+                                                                Super Admin
+                                                            </span>
+                                                        </DropdownItem>
+                                                    </Link>
+
+                                                   
+                                                </DropdownMenu>
+                                            </UncontrolledDropdown>
+                                        </Nav> */}
+                                    </li>
+                                    <li>
+                                        <Link to="/create_account">
+                                            <button className="btn btn-dove manrope" style={{ fontSize: "14px", fontWeight: "700" }}>
+                                                Create free account
+                                            </button>
+                                        </Link>
+                                    </li>
+                                </span>
+                            </span>
+                        </ul>
+                    </nav>
+                </div>
+
+                <Banner />
+
+                <Page1 />
+
+                <div className="page-wrapper page2" id="screen02" style={!isMobile ? null : { height: "4050px", paddingBottom: "20px" }}>
+                    <div className="container-fluid">
+                        {isMobile ? (
+                            <div>
+                                <br />
+                                <br />
+                            </div>
+                        ) : null}
+
+                        {!isMobile ? <div className="cust-container">
+                            <div className="col-sm-12">
+                                <img src={ListImg} style={{ width: "100%" }} />
+                            </div>
+                        </div> : null}
+
+                        {/* <Parallax animation={{ x: 0, opacity: 1, playScale: [0.1, 0.3] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                            <TweenOne key="0" animation={{ opacity: 0.5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} />
+                            <QueueAnim key="queue"> */}
+                        <div className={!isMobile ? "cust-container2" : null} style={!isMobile ? { marginTop: "70px" } : { marginTop: "18vh" }} key="a">
+                            <div className="row">
+                                <img src={bottomBanner} style={isMobile ? { width: "100%", height: "220px" } : { width: "100%", marginLeft: "auto", marginRight: "auto" }} />
+                            </div>
+                        </div>
+                        {/* </QueueAnim>
+                        </Parallax> */}
+                        {/* <OverPack style={{ overflow: "hidden" }}>
+                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+                        {/* <Parallax
+                            animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }}
+                            //   style={{ transform: 'translateX(-100px)', opacity: 0 }}
+                            style={{ transform: "translateX(-100px)", filter: "blur(0px)", opacity: 0 }}
+                            className="code-box-shape"
+                        >
+                            <QueueAnim key="queue"> */}
+                        <div className={!isMobile ? "cust-container2" : null} key="a">
+                            <div className="col-sm-12 col-lg-7" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                <h1 className="manrope" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
+                                    Our solution for your business
+                                </h1>
+                                <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                    We are self-service data analytics software that lets you create visually {!isMobile ? <br /> : null}
+                                    appealing data visualizations and insightful dashboards in minutes.
                                 </p>
                             </div>
-                    
                         </div>
-                        <div className="col-lg-8">
-                            <div className="text-center">
-                                <img src={Laptop} alt="" style={{width: '100%'}}/>
-                            </div>
-                        </div>
+                        {/* </QueueAnim>
+                        </Parallax> */}
+                        {/* </OverPack> */}
+
+                        {/* <OverPack style={{ overflow: "hidden" }}>
+                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+
+                        {/* </OverPack> */}
+
+                        {/* <OverPack style={{ overflow: "hidden" }}>
+                    <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+
+                        {/* </OverPack> */}
+
+                        {/* <OverPack style={{ overflow: "hidden" }}> */}
+                        <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                            {/* <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+                            <QueueAnim key="queue" leaveReverse>
+                                <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
+                                    <div className={!isMobile ? "row" : null}>
+                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "190px" }}>
+                                            <h1 className="manrope" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
+                                                Collaborate with your team anytime, anywhere.
+                                            </h1>
+                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                See which work apps your team is working in, and join them with a click. Shared cursors equals better than screen-sharing.See which work apps your team is working in, and join them with a
+                                                click. Shared cursors equals better than screen-sharing.
+                                            </p>
+
+                                            {!isMobile ? (
+                                                <div className="row">
+                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Organize your data
+                                                        </p>
+                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Work with any team
+                                                        </p>
+                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Business analytics
+                                                        </p>
+                                                    </div>
+                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "0px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                        <p className="manrope-text-light" style={{ fontSize: "15px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Always in sync
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div className="row">
+                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Organize your data
+                                                        </p>
+                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Work with any team
+                                                        </p>
+                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Business analytics
+                                                        </p>
+                                                    </div>
+                                                    <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "0px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                        <p className="manrope-text-light" style={{ fontSize: "11px", lineHeight: "26px", width: "100%", color: "#84818A" }}>
+                                                            <img src={iconCheck} style={{ width: "24.7px", height: "24px", float: "left" }} /> &nbsp; &nbsp; Always in sync
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                            <img src={womImg} style={isMobile ? { width: "300.9px", height: "346px", marginBottom: "20px" } : { width: "491.9px", height: "516px", marginBottom: "20px" }} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </QueueAnim>
+                        </Parallax>
+                        <Parallax
+                            animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }}
+                            //   style={{ transform: 'translateX(-100px)', opacity: 0 }}
+                            style={{ transform: "translateX(-100px)", filter: "blur(0px)", opacity: 0 }}
+                            className="code-box-shape"
+                        >
+                            <QueueAnim key="queue" leaveReverse>
+                                <div className={!isMobile ? "cust-container2" : null} key="a">
+                                    <div className={!isMobile ? "row" : null}>
+                                        <div className="col-sm-12 col-lg-3" key="1" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                            <img src={pie} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                Analyze your data
+                                            </h1>
+                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                Create reports with an easy to {!isMobile ? <br /> : null}
+                                                use drag-and-drop designer.
+                                            </p>
+                                        </div>
+                                        <div className="col-sm-12 col-lg-3" key="2" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                            <img src={check} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                Collaborate securely
+                                            </h1>
+                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                Share/publish your reports
+                                                {!isMobile ? <br /> : null}
+                                                with your colleagues.
+                                            </p>
+                                        </div>
+                                        <div className="col-sm-12 col-lg-3" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                            <img src={dots} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                Embedded analytics
+                                            </h1>
+                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                Get a powerful analytics tool
+                                                {!isMobile ? <br /> : null}
+                                                in your own brand name.
+                                            </p>
+                                        </div>
+                                        <div className="col-sm-12 col-lg-3" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                            <img src={squares} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                            <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                Easy and Intuitive
+                                            </h1>
+                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                Easily converse with your data
+                                                {!isMobile ? <br /> : null}
+                                                using everyday language.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </QueueAnim>
+                        </Parallax>
+                        <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                            <QueueAnim key="queue">
+                                <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
+                                    <div className={!isMobile ? "row" : null}>
+                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "120px" }}>
+                                            <img src={bitmap1} style={isMobile ? { width: "300.9px", height: "346px", marginBottom: "20px" } : { width: "491.9px", height: "516px", marginBottom: "20px" }} />
+                                        </div>
+                                        <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "40px" } : { textAlign: "left", marginTop: "190px" }}>
+                                            <p className="manrope-text-light" style={{ color: "#05EEC0", fontSize: "16px" }}>
+                                                ANALYTICS
+                                            </p>
+                                            <h1 className="manrope" style={isMobile ? { fontSize: "20px", color: "#1B52C4" } : { fontSize: "39px", color: "#1B52C4" }}>
+                                                Analyze your data with our analyze tools.
+                                                {/* <br /> */}
+                                            </h1>
+                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                Self-service data analytics software that lets you create visually
+                                                {/* {!isMobile ? <br /> : null} */}
+                                                appealing data visualizations and insightful dashboards in minutes.
+                                            </p>
+                                            <div className="row">
+                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                    <img src={squares} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                                    <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                        Powerful dashboard
+                                                    </h1>
+                                                    <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                        Combine multiple reports into a single beautiful dashboard.
+                                                    </p>
+                                                </div>
+                                                <div className="col-sm-12 col-lg-6" style={isMobile ? { textAlign: "left", marginTop: "20px" } : { textAlign: "left", marginTop: "60px" }}>
+                                                    <img src={syncIcon} style={{ width: "53.35px", marginBottom: "20px" }} />
+                                                    <h1 className="manrope" style={isMobile ? { fontSize: "18px", color: "#1B52C4" } : { fontSize: "18px", color: "#2E2C34" }}>
+                                                        Always in Sync
+                                                    </h1>
+                                                    <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", lineHeight: "26px", color: "#84818A" } : { fontSize: "11px", lineHeight: "26px", color: "#84818A" }}>
+                                                        Don’t worry about the data, always be synchronized
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </QueueAnim>
+                        </Parallax>
+                        {/* </OverPack> */}
+                        {/* <OverPack style={{ overflow: "hidden" }}> */}
+                        {/* <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                            <TweenOne key="0" animation={{ opacity: 0.5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} />
+                            <QueueAnim key="queue">
+                                <div className={!isMobile ? "cust-container2" : null} style={{ marginTop: "70px" }} key="a">
+                                    <div className="row">
+                                        <img src={bottomBanner} style={isMobile ? { width: "100%", height: "200px" } : { width: "100%", marginLeft: "auto", marginRight: "auto" }} />
+                                    </div>
+                                </div>
+                            </QueueAnim>
+                        </Parallax> */}
+                        {/* </OverPack> */}
                     </div>
+                    {/* <div style={{height:'600px', width:'200px'}}>
+&nbsp;
+            </div> */}
+                    {/* <OverPack style={{ overflow: "hidden" }}>
+                <TweenOne key="0" animation={{ opacity: .5 }} className="code-box-shape" style={{ opacity: 0, marginBottom: 10 }} /> */}
+                    <Parallax animation={{ x: 0, opacity: 1, playScale: [0.3, 0.6] }} style={{ transform: "translateX(-100px)", opacity: 0 }} className="code-box-shape">
+                        <QueueAnim key="queue">
+                            <div className="bg-bott" key="a">
+                                <div className="container" style={!isMobile ? { paddingTop: "120px" } : { paddingTop: "10px" }}>
+                                    <div className={!isMobile ? "row" : null}>
+                                        <div className="col-sm-12 col-lg-6">
+                                            <h1 className="manrope" style={!isMobile ? { fontSize: "39px", color: "#FFF" } : { fontSize: '29px', color: "#FFF" }}>
+                                                Join Our Newsletter
+                                            </h1>
+                                            <p className="manrope-text-light" style={!isMobile ? { color: "#FFF", fontSize: "15px" } : { color: "#FFF", fontSize: "11px" }}>
+                                                Just insert your email into the field below. And you will get
+                                                {!isMobile ? <br /> : null}
+                                                the updates about our updates
+                                            </p>
+                                        </div>
+                                        <div className="col-sm-12 col-lg-6">
+                                            {/* <Search placeholder="input search text" width={100} style={{padding:'20px'}} enterButton={<button style={{background:'#1B52C4', fontSize:'18px', fontStyle:'Open Sans', fontWeight:'700'}} className="btn btn-primary">Subscribe</button>} size="large"/> */}
+
+                                            <div
+                                                className={!isMobile ? "row" : null}
+                                                style={!isMobile ? { background: "#FFF", width: "452px", borderRadius: "8px", padding: "3px" } : { background: "none", width: "100%", borderRadius: "8px" }}
+                                            >
+                                                <input style={{ border: "none" }} placeholder="Your Email" className="form-control col-lg-8 col-sm-12" type="text" />
+                                                {isMobile ? <div></div> : null}
+                                                <button
+                                                    style={
+                                                        !isMobile
+                                                            ? { background: "#1B52C4", fontSize: "18px", fontStyle: "Open Sans", fontWeight: "700", marginLeft: "21px" }
+                                                            : { background: "#1B52C4", fontSize: "18px", fontStyle: "Open Sans", fontWeight: "700" }
+                                                    }
+                                                    className={!isMobile ? "btn btn-primary btn-mobile" : "btn btn-primary btn-mobile mt-3"}
+                                                >
+                                                    Subscribe
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* <img src={blueBottom} style={{ width: "100%" }} /> */}
+                            </div>
+
+                            <div className="">
+                                <div className="container-fluid" style={!isMobile ? { paddingTop: "120px", paddingLeft: "200px" } : { paddingTop: "120px", paddingBottom: "20px" }}>
+                                    <div className={!isMobile ? "row" : null}>
+                                        <div className="col-sm-12 col-lg-5">
+                                            <img src={LogoKul} style={{ width: "90px", height: "28px", marginBottom: "30px" }} />
+                                            <p className="manrope-text-light" style={!isMobile ? { fontSize: "15px", color: "84818A", lineHeight: "26px" } : { fontSize: "11px", color: "84818A", lineHeight: "26px" }}>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing {!isMobile ? <br /> : null}
+                                                elit, sed do eiusmod tempor incididunt ut labore et
+                                                {!isMobile ? <br /> : null}
+                                                dolore magna aliqua.
+                                            </p>
+                                            <p className={!isMobile ? "row" : null}>
+                                                <img src={googleIcon} style={{ width: "42px", height: "40px", marginRight: "10px" }} />
+                                                <img src={twitter} style={{ width: "42px", height: "40px", marginRight: "10px" }} />
+                                                <img src={instagram} style={{ width: "42px", height: "40px", marginRight: "10px" }} />
+                                                <img src={linkden} style={{ width: "42px", height: "40px", marginRight: "10px" }} />
+                                            </p>
+                                        </div>
+                                        <div className="col-sm-1"></div>
+                                        <div className="col-sm-12 col-lg-3">
+                                            <b className="manrope-text" style={{ fontSize: "18px", color: "#2E2C34", lineHeight: "24px" }}>
+                                                Services
+                                            </b>
+                                            <br />
+                                            <br />
+                                            {!isMobile ? (
+                                                <div>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                        Cashier App
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                        Super Teller
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                        Teller
+                                                    </p>
+                                                </div>
+                                            ) : (
+                                                <div>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                        Cashier App
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                        Super Teller
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                        Teller
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="col-sm-12 col-lg-3">
+                                            <b className="manrope-text" style={{ fontSize: "18px", color: "#2E2C34", lineHeight: "24px" }}>
+                                                Company
+                                            </b>
+                                            <br />
+                                            <br />
+                                            {!isMobile ? (
+                                                <div>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                        Terms
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                        Privacy Policy
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "15px" }}>
+                                                        Contact us
+                                                    </p>
+                                                </div>
+                                            ) : (
+                                                <div>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                        Terms
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                        Privacy Policy
+                                                    </p>
+                                                    <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "11px" }}>
+                                                        Contact us
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </QueueAnim>
+                    </Parallax>
+                    {/* </OverPack> */}
                 </div>
             </div>
-        
-            <div className="bg-sky py-6">
-                <div className="container">
-                    <h2 className="font-weight-bold text-center mb-3 mt-5">
-                        Trusted by renowned Academia.
-                    </h2>
-                    <p className="text-center">
-                        The e-Learn Ng platform is used by some of the best institutions in the country.
-                        This is what some of them think.
-                    </p>
-                
-                    <div className="row mt-4">
-                        <div className="col-lg-6">
-                            <div className="card card-testimonial pt-4">
-                                <div className="card-avatar">
-                                    <a href="#pablo">
-                                        <img src={Prof1} alt="" className="img img-raised rounded"/>
-                                    </a>
-                                </div>
-                            
-                                <div className="card-body text-center">
-                                    <p className="card-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.
-                                    </p>
-                                    <h3 className="card-title mb-0">Oscar Okolo</h3>
-                                    <h5 className="category text-muted">
-                                        Ph.D
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div className="col-lg-6">
-                            <div className="card card-testimonial pt-4">
-                                <div className="card-avatar">
-                                    <a href="#pablo">
-                                        <img src={Prof2} alt="" className="img img-raised rounded"/>
-                                    </a>
-                                </div>
-                            
-                                <div className="card-body text-center">
-                                    <p className="card-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat.
-                                    </p>
-                                    <h3 className="card-title mb-0">Jonah Anyanwu</h3>
-                                    <h5 className="category text-muted">
-                                        Ph.D
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
-            </div>
-        </div>
-
-    </>
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+            // </OverPack>
+        );
+    }
+}

@@ -30,6 +30,7 @@ import DocMoney from "../assets/images/Doc_Money.svg"
 import {UserContext} from "../Context/UserContext"
 import * as Unicons from '@iconscout/react-unicons';
 import kelly from "../assets/images/82002-support.gif";
+import hamb from "../assets/images/hamb.png";
 
 // reactstrap components
 import {
@@ -357,7 +358,8 @@ const BursarHeader = (props) => {
 				<Container fluid>
 					{/* Toggler */}
 					<button className="navbar-toggler" type="button" onClick={toggleCollapse} >
-						<span className="navbar-toggler-icon" />
+						{/* <i className="fa fa-bars" /> */}
+						<img src={hamb} style={{width:'35px'}}/>
 					</button>
 					
 					{/* Brand */}

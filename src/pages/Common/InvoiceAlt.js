@@ -25,13 +25,13 @@ const Invoice = (props) => {
       return;
     }
     setReferenceNumber(trfx);
-    //  setTimeout(() => {
+     setTimeout(() => {
 
-    // let stateObj = { id: "100" };
-    // window.history.replaceState(stateObj, "x 2", "/invoice2");
+    let stateObj = { id: "100" };
+    window.history.replaceState(stateObj, "x 2", "/invoice2");
 
 
-    //  }, 2000)
+     }, 2000)
 
     Endpoint.callPaymentDetailsByRef(trfx)
       .then((res) => {

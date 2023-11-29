@@ -4,6 +4,7 @@
 @media only screen and (max-width: 414px) {
   .banner-bg {
     pointer-events: none;
+    height: 100vh;
   }
   .no-banner {
     display: none;
@@ -15,6 +16,7 @@
   
     .banner-content {
       height: 320px;
+      width: 91%;
     }
     h1 {
       font-size: 56px;
@@ -22,19 +24,29 @@
     }
   
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 500px) {
   
     input[type="text"], input[type="password"], input[type="number"]{
-        font-size: 16px!important;
+        font-size: 12px;
     }
   
 }
+@media only screen and (max-width: 800px) {
+
+  input[type="text"],
+  input[type="password"],
+  input[type="number"] {
+    font-size: 14px;
+  }
+
+}
 @media only screen and (max-width: 500px) {
     p{
-        font-size: 11!important;
+        font-size: 11px;
     }
     .banner .banner-content {
         margin-top: 0px;
+      width: 91%;
     }
     .page1{
         min-height: 200px;

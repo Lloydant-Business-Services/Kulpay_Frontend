@@ -19,7 +19,7 @@ import { AttentionSeeker, Fade } from "react-awesome-reveal";
 import VerifyIdentity from "./VerifyIdentity";
 import VerifyAccount from "./VerifyAccount";
 import roundIcon from "../../../assets/images/Round-icon.png";
-
+import highkulpaydark from "../../../assets/images/alldarkLogoCrop.png";
 import girl_credit from "../../../assets/images/sss.png";
 
 
@@ -40,7 +40,7 @@ var SuperAdmin = {
 };
 
 var SuperAdminMobile = {
-    height: "38vh",
+    height: "22vh",
     backgroundImage: `url(${girl_credit})`,
     backgroundSize: "cover",
     marginTop: "0px",
@@ -206,8 +206,8 @@ class CreateAccount extends Component {
             <div>
                 <div id="preloader">
                     <div id="status">
-                        <img src={logo} style={{ left: "-3rem", top: "-2.7rem", width: "138px", marginTop: "10px", position: "absolute" }} />
-                        <StageSpinner color="#05EEC0" backColor="#FFF" frontColor="#FFF" size={50} />
+                        <img src={logo} style={isMobile ? { left: "-3rem", top: "-2.7rem", width: "100px", marginTop: "10px", position: "absolute" } : { left: "-3rem", top: "-2.7rem", width: "138px", marginTop: "10px", position: "absolute" }} />
+                        <StageSpinner color="#05EEC0" backColor="#FFF" frontColor="#FFF" size={30} />
                     </div>
                 </div>
 
@@ -220,11 +220,11 @@ class CreateAccount extends Component {
                                 <p style={{ fontSize: '14px', marginTop: '-2px', marginLeft: '76px' }} className="text-white">Seemless and swift integration...</p>
                                 <br />
                                 {this.state.resolveRole === "Teller" ? (
-                                    <p style={{ color: "#FFF" }} className="manrope-text">
+                                    <p style={{ color: "#FFF" }} className="outfit_text">
                                         Teller
                                     </p>
                                 ) : this.state.resolveRole == "SuperTeller" ? (
-                                    <p style={{ color: "#FFF" }} className="manrope-text">
+                                    <p style={{ color: "#FFF" }} className="outfit_text">
                                         Super Teller
                                     </p>
                                 ) : null}
@@ -236,36 +236,46 @@ class CreateAccount extends Component {
                         </div>
                     ) : (
                         <div className="container" style={SuperAdminMobile}>
-                            <center style={{ marginTop: "100px" }}>
-                                <img src={logo} style={{ width: "250px" }} />
+                            {/* <center style={{ marginTop: "100px" }}>
+                                <img src={logo} style={{ width: "142px" }} />
+                                    <p style={{ fontSize: '10px', marginTop: '-2px', marginLeft: '76px' }} className="text-white">Seemless and swift integration...</p>
                                 <br />
                                 {this.state.resolveRole === "Teller" ? (
-                                    <p style={{ color: "#FFF" }} className="manrope-text">
+                                    <p style={{ color: "#FFF" }} className="outfit_text">
                                         Teller
                                     </p>
                                 ) : this.state.resolveRole == "SuperTeller" ? (
-                                    <p style={{ color: "#FFF" }} className="manrope-text">
+                                    <p style={{ color: "#FFF" }} className="outfit_text">
                                         Super Teller
                                     </p>
                                 ) : null}
 
-                                {/* <p style={{ color: "#FFF" }} className="manrope">
-                            Teller
-                        </p> */}
-                            </center>
+                                
+                            </center> */}
                         </div>
                     )}
                     {this.state.create_account ? 
                     <div className="col-sm-5 col-lg-5" style={{ background: "#FFF", minHeight: "100vh" }}>
                         <div className={isMobile ? "mobile-container-fluid" : "cust-container4"}>
-                                <div className="col-sm-12" style={{ marginTop: "-22px" }}>
-                                    <img src={roundIcon} style={{ width: '67px' }} />
-                                </div>
+                                {!isMobile ?
+
+                                    <div className="col-sm-12" style={{ marginTop: "5px" }}>
+                                        <img src={roundIcon} style={{ width: '67px', marginRight: '60px', float: 'right', marginTop: '-20px' }} />
+                                    </div>
+                                    :
+                                    <>
+                                        <div className="col-sm-12" style={{ marginTop: "-22px" }}>
+                                            <img src={roundIcon} style={{ width: '50px' }} />
+                                        </div>
+                                        <img src={highkulpaydark} style={{ width: "65px", marginTop: "-27px", float: 'right' }} />
+                                    </>
+                                }
+
                             <div className={!isMobile ? "custom-form col-sm-10 mt-3" : "custom-form col-sm-10 mt-4"}>
-                                <h2 style={!isMobile ? { fontSize: "36px" } : { fontSize: "31px" }} className="manrope-text">
+                                    <h2 style={!isMobile ? { fontSize: "36px" } : { fontSize: "31px" }} className="outfit_head">
                                     Create an account
                                 </h2>
-                                <p className="manrope-text" style={{ fontSize: "14px", marginTop: "-10px" }}>
+                                    <p className="outfit_text" style={isMobile ? { fontSize: "14px", marginTop: "-15px" } : { fontSize: "14px", marginTop: "-10px" }}>
                                     Already have an account?{" "}
                                     <span style={{ color: "#1B52C4", cursor: "pointer" }}>
                                         <Link style={{ color: "#1B52C4" }} to={{ pathname: "/signin" }}>
@@ -292,11 +302,11 @@ class CreateAccount extends Component {
                                 ) : null}
                                 <br />
 
-                                <div class="row">
+                                <div class="row" style={isMobile ? {marginTop:'-41px'} : null}>
                                     <div class="col-xl-6 col-sm-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control manrope-text drk-text" style={{ fontSize: "13px" }} name="first_name" onChange={this.handleInput} id="first_name" />
-                                            <label for="first_name" class="animated-label manrope-text" style={{ fontSize: "13px" }}>
+                                            <input type="text" class="form-control outfit_text drk-text" style={{ fontSize: "13px" }} name="first_name" onChange={this.handleInput} id="first_name" />
+                                            <label for="first_name" class="animated-label outfit_text" style={{ fontSize: "13px" }}>
                                                 First name
                                             </label>
                                         </div>
@@ -304,8 +314,8 @@ class CreateAccount extends Component {
                                     <br />
                                     <div className={!isMobile ? "col-xl-6 col-sm-12" : "col-xl-6 col-sm-12 mt-3"}>
                                         <div class="form-group">
-                                            <input type="text" onChange={this.handleInput} class="form-control manrope-text drk-text" name="last_name" id="last_name" style={{ fontSize: "13px" }} />
-                                            <label for="last_name" class="animated-label manrope-text" style={{ fontSize: "13px" }}>
+                                            <input type="text" onChange={this.handleInput} class="form-control outfit_text drk-text" name="last_name" id="last_name" style={{ fontSize: "13px" }} />
+                                            <label for="last_name" class="animated-label outfit_text" style={{ fontSize: "13px" }}>
                                                 Last name
                                             </label>
                                         </div>
@@ -315,8 +325,8 @@ class CreateAccount extends Component {
                                 <div class="row mt-3">
                                     <div class="col-xl-12 col-sm-12">
                                         <div class="form-group">
-                                            <input type="email" class="form-control manrope-text drk-text" style={{ fontSize: "13px" }} name="email" onChange={this.onChangeEmail} id="email" />
-                                            <label for="email" class="animated-label manrope-text" style={{ fontSize: "13px" }}>
+                                            <input type="email" class="form-control outfit_text drk-text" style={{ fontSize: "13px" }} name="email" onChange={this.onChangeEmail} id="email" />
+                                            <label for="email" class="animated-label outfit_text" style={{ fontSize: "13px" }}>
                                                 Email address
                                             </label>
                                         
@@ -332,8 +342,8 @@ class CreateAccount extends Component {
                                 <div class="row mt-3">
                                     <div class="col-xl-12 col-sm-12">
                                         <div class="form-group">
-                                            <input type="number" class="form-control manrope-text drk-text" value={this.state.phone} style={{ fontSize: "13px" }} name="phone" onChange={this.handleInput} id="phone" />
-                                            <label for="phone" class="animated-label manrope-text" style={{ fontSize: "13px" }}>
+                                            <input type="number" class="form-control outfit_text drk-text" value={this.state.phone} style={{ fontSize: "13px" }} name="phone" onChange={this.handleInput} id="phone" />
+                                            <label for="phone" class="animated-label outfit_text" style={{ fontSize: "13px" }}>
                                                 Phone Number
                                             </label>
                                         
@@ -354,7 +364,7 @@ class CreateAccount extends Component {
                                             {/* <div className="col-sm-12"> */}
                                             <input
                                                 type="password"
-                                                class="form-control manrope-text drk-text"
+                                                class="form-control outfit_text drk-text"
                                                 style={{
                                                     fontSize: "13px",
                                                     // borderBottom:'none'
@@ -368,7 +378,7 @@ class CreateAccount extends Component {
                                     {!isMobile ? <img src={remove_red_eye} style={!isMobile ? {minWidth:'16px', marginTop:'-30px'} : null}/> : null}
                                     </div> */}
 
-                                            <label for="password" class="animated-label manrope-text" style={{ fontSize: "13px" }}>
+                                            <label for="password" class="animated-label outfit_text" style={{ fontSize: "13px" }}>
                                                 Password
                                             </label>
                                         </div>
@@ -384,7 +394,7 @@ class CreateAccount extends Component {
                                             {/* <div className="col-sm-12"> */}
                                             <input
                                                 type="password"
-                                                class="form-control manrope-text drk-text"
+                                                class="form-control outfit_text drk-text"
                                                 style={{
                                                     fontSize: "13px",
                                                     // borderBottom:'none'
@@ -398,7 +408,7 @@ class CreateAccount extends Component {
                                     {!isMobile ? <img src={remove_red_eye} style={!isMobile ? {minWidth:'16px', marginTop:'-30px'} : null}/> : null}
                                     </div> */}
 
-                                            <label for="confirm_password" class="animated-label manrope-text" style={{ fontSize: "13px" }}>
+                                            <label for="confirm_password" class="animated-label outfit_text" style={{ fontSize: "13px" }}>
                                                 Confirm password
                                             </label>
                                         </div>
@@ -417,8 +427,8 @@ class CreateAccount extends Component {
                                     </div>
                                     <div className="col-sm-10">
                                         <div className="form-inline">
-                                            <label className="label-control manrope-text-light" style={{ color: "#84818A", fontSize: "12px" }}>
-                                                <p className="manrope-text-light" style={{ color: "#84818A", fontSize: "12px" }}>
+                                            <label className="label-control outfit_text-light" style={{ color: "#84818A", fontSize: "12px" }}>
+                                                <p className="outfit_text" style={{ color: "#84818A", fontSize: "12px" }}>
                                                     By clicking Create account, I agree that I have read and accepted the <span style={{ color: "#1B52C4" }}>Terms of Use</span> and <span style={{ color: "#1B52C4" }}>Privacy Policy</span>.
                                                 </p>
                                             </label>
@@ -429,12 +439,12 @@ class CreateAccount extends Component {
                                 <div class="form-group">
                                     <div className="row">
                                         {/* <div className="col-sm-12 col-lg-6">
-                                            <p className="manrope-text" style={{ fontSize: "14px", color: "#1B52C4" }}>
+                                            <p className="outfit_text" style={{ fontSize: "14px", color: "#1B52C4" }}>
                                                 Forgot password?
                                             </p>
                                         </div> */}
                                         <div className="col-sm-12 col-lg-12">
-                                            <button className="btn btn-primary manrope-text" disabled={this.state.agreedToTerms} type="button" onClick={this.handleCreateAccount} style={{ width: "100%", padding: "11px, 24px, 11px, 24px", fontSize: "14px", height: "48px" }}>
+                                            <button className="btn btn-primary outfit_text" disabled={this.state.agreedToTerms} type="button" onClick={this.handleCreateAccount} style={{ width: "100%", padding: "11px, 24px, 11px, 24px", fontSize: "14px", height: "48px" }}>
                                                 Create account
                                             </button>
                                         </div>

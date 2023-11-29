@@ -145,7 +145,6 @@ class CollectionReport extends Component {
           left:10,
           right:10
      };
-    
         
     
         if(typeof window !== "undefined"){
@@ -241,7 +240,7 @@ class CollectionReport extends Component {
         //   doc.setFontSize(15);
     
         //   doc.addImage(img, 'png', docWidth - 100, 28, 50, 17);
-          doc.addFont("Roboto-Regular.ttf", "Roboto", "normal")
+        doc.addFont("Roboto-Regular.ttf", "Roboto", "normal")
 		doc.addFont("Roboto-Bold.ttf", "Roboto", "bold")
         //doc.setFont("Roboto");
         doc.addImage(imgLogo, 'png', 50, 45, 75, 25);

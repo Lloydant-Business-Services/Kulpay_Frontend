@@ -450,6 +450,5 @@ export function generateColorCodes(numColors) {
             colorCodes.push(color);
         }
     }
-
     return colorCodes;
 }

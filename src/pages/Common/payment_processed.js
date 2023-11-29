@@ -108,10 +108,10 @@ require('../../assets/css/reciept.css');
         <img src={successStatic} id="first_b" style={{width:"25vw", display:"none"}}/>
 <h1 className="text-black" style={{fontSize:"36px"}}>payment verified!</h1>
 <p style={{fontSize:"17px"}}>Congratulations! Your payment was successfully proccessed.</p>
-
+            <button className="btn btn-primary" type="button" onClick={() => triggerReceipt()} style={{ padding: "10px" }}> &nbsp;View Reciept &nbsp; &nbsp;<i class="fa fa-arrow-left" style={{ fontSize: "20px" }}></i>&nbsp; &nbsp; &nbsp;</button>
     </center>
 
-    <button className="btn btn-primary" type="button" onClick={() => triggerReceipt()} style={{padding:"10px"}}> &nbsp;View Reciept &nbsp; &nbsp;<i class="fa fa-arrow-left" style={{fontSize:"20px"}}></i>&nbsp; &nbsp; &nbsp;</button>
+   
 </div>
 </div>
                 {/* <div class="wrapperAlert mt-4" id="stay_process">

@@ -399,7 +399,7 @@ const AccountVerification = () => {
                 </div>
             </Modal>
 
-            <div className={!isMobile ? "py-5" : "container-fluid py-5"} style={!isMobile ? {maxWidth:"70vw", paddingLeft:"9em"} : null}>
+            <div className={!isMobile ? "py-5" : "py-5"} style={!isMobile ? {maxWidth:"70vw", paddingLeft:"9em"} : null}>
                 <div className="card" style={{ marginTop: "50px", background: "#FFF" }}>
                     <div className="card-body" style={isMobile ? { padding: "0.5rem" } : { padding: "3rem" }}>
                         <h2 className="manrope-text" style={!isMobile ? { fontSize: "30px", marginBottom: "20px" } : { fontSize: "17px", marginBottom: "20px" }}>
@@ -461,7 +461,7 @@ const AccountVerification = () => {
                                             </div>
                                         </div>
 
-                                        <div className="row" style={{ marginTop: "40px" }}>
+                                        <div className="row" style={!isMobile ? { marginTop: "40px" } : null}>
                                             <div className="col-lg-6 col-sm-12">
                                                 <div class="form-group">
                                                     <input type="text" defaultValue={state.personDetails?.otherName} class="form-control manrope-text-light drk-text" style={{ fontSize: "13px" }} name="other_name" id="other_name" />
